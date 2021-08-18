@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Poison : MonoBehaviour
+public class PoisonL1 : MonoBehaviour
 {
     public BoxCollider2D gridarea;
     public ScoreController sc1;
-    public ScoreController sc2;
 
     private void Start()
     {
@@ -32,14 +31,9 @@ public class Poison : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player1")
+        if (other.tag == "Player")
         {
             DeductScore1();
-            RandomizedPos();
-        }
-        if (other.tag == "Player2")
-        {
-            DeductScore2();
             RandomizedPos();
         }
     }
@@ -47,10 +41,4 @@ public class Poison : MonoBehaviour
     {
         sc1.IncreaseScore(-10);
     }
-    public void DeductScore2()
-    {
-        sc2.IncreaseScore(-10);
-    }
 }
-
-    

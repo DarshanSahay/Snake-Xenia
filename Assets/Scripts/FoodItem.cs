@@ -5,7 +5,8 @@ using UnityEngine;
 public class FoodItem : MonoBehaviour
 {
     public BoxCollider2D gridarea;
-    public ScoreController scoreController;
+    public ScoreController sc1;
+    public ScoreController sc2;
     private void Start()
     {
         Randomposfood();
@@ -27,14 +28,23 @@ public class FoodItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player1")
             {
-            FoodPicked();
+            FoodPickedS1();
+            Randomposfood();
+            }
+            else if(other.tag == "Player2")
+            {
+            FoodPickedS2();
             Randomposfood();
             }
         }
-    public void FoodPicked()
+    public void FoodPickedS1()
     {
-        scoreController.IncreaseScore(10);
+        sc1.IncreaseScore(10);
+    }
+    public void FoodPickedS2()
+    {
+        sc2.IncreaseScore(10);
     }
 }
